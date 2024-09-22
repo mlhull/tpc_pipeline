@@ -264,7 +264,6 @@ schema = StructType([
     ])
 
 df = spark.read.option("delimiter", "|").schema(schema).csv(s3_zip_path)
-#df = spark.read.csv(s3_zip_path, header=True, inferSchema=False, schema=schema)
 
 s3_output_path = f"{tpc_parquet}/region/{partition_path}"
 df.write.mode("overwrite").parquet(s3_output_path)
@@ -279,7 +278,6 @@ schema = StructType([
     StructField("N_COMMENT", StringType(), True)
     ])
 df = spark.read.option("delimiter", "|").schema(schema).csv(s3_zip_path)
-#df = spark.read.csv(s3_zip_path, header=True, inferSchema=False, schema=schema)
 
 s3_output_path = f"{tpc_parquet}/nation/{partition_path}"
 df.write.mode("overwrite").parquet(s3_output_path)
