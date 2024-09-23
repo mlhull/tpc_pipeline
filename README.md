@@ -17,17 +17,15 @@ This project implements an ETL pipeline using AWS services and Apache Airflow to
 
 ## Features
   - **Airflow orchestration**: The pipeline is triggered by detecting files in the source S3 bucket.
-  - **Two versions for processing data using Apache Spark:
-    - [AWS EMR](https://github.com/mlhull/tpc_pipeline/tree/main/emr)
-    - [AWS Glue](https://github.com/mlhull/tpc_pipeline/tree/main/glue)
+  - **Two versions for processing data (EMR, Glue) using Apache Spark
   - **S3 for storage**: Data is stored in different phases of the ETL process (source, staging, and target).
   - **Glue Crawler**: AWS Glue crawlers catalog metadata into the Glue Data Catalog for easier querying.
 
 ## Installation
 - Set up Airflow and ensure the necessary connections to S3, EMR, and Glue.
-- Pipelines used different application files and DAGs
-  - AWS EMR pipeline uses: tpc_emr_pipeline.py, 01_file_converter.py, and 02_0*_query.py files
-  - AWS Glue pipeline uses: tpc_glue_pipeline.py, 01_g_file_converter.py, and 02_g_0*_query.py files
+- Two pipeline options and their application files + DAGs:
+    - [AWS EMR](https://github.com/mlhull/tpc_pipeline/tree/main/emr)
+    - [AWS Glue](https://github.com/mlhull/tpc_pipeline/tree/main/glue)
 
 ## Usage
 1. Trigger the DAG in Apache Airflow to start the pipeline.
