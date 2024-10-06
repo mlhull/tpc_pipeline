@@ -46,10 +46,10 @@ Based on Airflow task durations, Glue and EMR-based Spark Jobs took ~15 minutes 
 ## Installation
 - Install Airflow. I recommend using Astro's Docker Image because, as one of many benefits, this ensures you're using the last instance of Airflow.
 - Create AWS service account with permissions to interact S3, EMR and Glue (job, crawler) resources.
-- Within Airflow's Connections, add your AWS service account from the above step. Ensure your DAG references this by its connection name
-- Two pipeline options and their application files + DAGs:
-    - [AWS EMR](https://github.com/mlhull/tpc_pipeline/tree/main/emr)
-    - [AWS Glue](https://github.com/mlhull/tpc_pipeline/tree/main/glue)
+- Ensure there is a connection between AWS Cloud Services and your Airflow instance. See here for my [Medium article](https://medium.com/@madelyne.hull/using-cloud-connections-in-apache-airflow-dags-0d0d34f648e8) to understand different options I considered for this pipeline and why I elected to use Airflow Connections.
+- Two pipeline options exist for this pipeline. Their application files, including the DAGs, can be found via the links below. DAG files will need to be stored to the DAGs folder in your Airflow instance.
+    - [AWS EMR](https://github.com/mlhull/tpc_pipeline/tree/main/emr): The application files will need to be uploaded to a S3 bucket for the spark EMR steps to pick up.
+    - [AWS Glue](https://github.com/mlhull/tpc_pipeline/tree/main/glue): The application files will need to be stored as Glue jobs.
 
 ## Usage
 1. Trigger the DAG in Apache Airflow to start the pipeline.
